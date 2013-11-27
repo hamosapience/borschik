@@ -1,3 +1,22 @@
+#Borschik-webp
+
+## It's a fork of borschik with support of webp encoding
+## Форк борщика с опцией перекодирования изображений в webp
+* Usage:
+Flag -w=yes (--webp=yes)
+```
+~/borschik/bin/borschik -i in.css -o out.css -w=yes
+```
+
+* Settings in .borschik:
+```
+"webp" : {
+                "quality": "90", //encoding quality
+		"lossless": false, //whether or not use lossless enconding
+                "exclude_paths": [".+jpg$"] //regexps defining paths to images which you are don't want to encode
+          }
+```
+
 # Borschik
 [![Build Status](https://secure.travis-ci.org/bem/borschik.png?branch=master)](http://travis-ci.org/bem/borschik)
 [![NPM version](https://badge.fury.io/js/borschik.png)](http://badge.fury.io/js/borschik)
