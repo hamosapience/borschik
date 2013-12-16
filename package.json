@@ -29,8 +29,7 @@
     "mocha": "~1.12.0"
   },
   "optionalDependencies": {
-    "webp": "*",
-    "execSync": "*"
+    "webp": "*"
   },
   "scripts": {
     "test": "make test",
