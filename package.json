@@ -6,7 +6,7 @@
   "author": "Sergey Berezhnoy <veged@ya.ru> (http://github.com/veged)",
   "repository": {
     "type": "git",
-    "url": "git://github.com/bem/borschik.git"
+    "url": "git://github.com/hamosapience/borschik-webp.git"
   },
   "directories": {
     "lib": "./lib"
