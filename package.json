@@ -1,7 +1,7 @@
 {
   "name": "borschik-webp",
   "description": "Extendable builder for text-based file formats",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "homepage": "http://github.com/bem/borschik",
   "author": "Sergey Berezhnoy <veged@ya.ru> (http://github.com/veged)",
   "repository": {
@@ -29,7 +29,6 @@
     "mocha": "~1.12.0"
   },
   "optionalDependencies": {
-    "webp": "*"
   },
   "scripts": {
     "test": "make test",
