@@ -10,8 +10,8 @@ File `.borschik` relates to its own directory and all subdirectories.
 ```js
 {
     "freeze_paths": {
-        "i/bg": "../../_", // result path is "_"
-        "i/ico": "../_" // result path is "i/_"
+        "i/bg/**": "freeze/bg",
+        "i/ico/**": "freeze/ico"
     }
 }
 ```
@@ -19,38 +19,42 @@ File `.borschik` relates to its own directory and all subdirectories.
 `freeze_paths` — this key defines which files will be frozen, and where any transformations in the file path of the frozen result.
 
 For example, when Borschik processes CSS file and finds links to images in `/i/bg`,
-borschik freezes these links, changing their path to `/_` (because `/i/bg/../../_` is '/_' ) and creates image copy in this path.
+borschik freezes these links, changing their path to `freeze/bg` and creates image copy in this path.
 
-Object key — directories whose files will be frozen.
-Key value - directory for resulting frozen files, relative to their initial path.
+Object key — wildcards whose files will be frozen. Wildcards are matched with [minimatch](https://github.com/isaacs/minimatch).
+Key value - directory for resulting frozen files, relative to the config path.
 
 Other example
 ```js
 {
     "freeze_paths": {
-        "i/bg": "_" // result path is 'i/bg/_'
+        "i/bg/**": "i/_"
     }
 }
 ```
-Borschik freezes files from directory `i/bg` to `i/bg/_`
+Borschik freezes matched files from directory `i/bg` to `i/_`
 
 **Important note:**
 * Borschik does not freeze all files in directories but only those linked by processed files.
 * Borschik creates a copy of original files in freeze dir whose filename is a checksum of the file content.
 
 ## resource inlining
-There is special syntax (`:encodeURIComponent:` and `:base64:`) for resource inlining.
+There is special syntax (`:encodeURI:`, `:encodeURIComponent:` and `:base64:`) for resource inlining.
 
 ```json
 {
     "freeze_paths": {
-        "i/svg_images": ":encodeURIComponent:",
-        "i/gif_images": ":base64:"
+        "i/svg_images/**": ":encodeURIComponent:",
+        "i/gif_images/**": ":base64:"
     }
 }
 ```
 
-With this config all links to resources in `i/svg_images` or `i/gif_images` will be inlined. Borschik supports `base64` and `encodeURIComponent` encoding only.
+With this config all links to resources in `i/svg_images` or `i/gif_images` will be inlined.
+
+Borschik supports `base64`, `encodeURI` and `encodeURIComponent` encoding only.
+
+Borschik supports following file formats: gif, png, svg, woff.
 
 Example
 ```css
@@ -73,3 +77,56 @@ Result
 ```
 
 Inlining in JS-files with `borschik.link()` is also supported.
+
+## nesting level
+```json
+{
+    "freeze_paths": {
+        "i/bg/**": "freeze",
+        "i/ico/**": "freeze"
+    },
+
+    "freeze_nesting_level": 2
+}
+```
+
+Nesting level is used to improve server performance for projects with a lot of freezed files.
+
+Servers have the problem to read directory listing with more then 1000 files and developers ussualy split such dirs.
+
+Some examples:
+
+Dir listing for `"freeze_nesting_level": 0` (default)
+```
+2bnxrFb8Ym4k7qx4vRv8Xs_l5Dg.png
+La6qi18Z8LwgnZdsAr1qy1GwCwo.gif
+X31pO5JJJKEifJ7sfvuf3mGeD_8.png
+XNya0AroXD40MFsUD5H4-a4glA8.gif
+```
+
+Dir listing for `"freeze_nesting_level": 1`
+```
+2/
+  bnxrFb8Ym4k7qx4vRv8Xs_l5Dg.png
+L/
+  a6qi18Z8LwgnZdsAr1qy1GwCwo.gif
+X/
+  31pO5JJJKEifJ7sfvuf3mGeD_8.png
+  Nya0AroXD40MFsUD5H4-a4glA8.gif
+```
+
+Dir listing for `"freeze_nesting_level": 2`
+```
+2/
+  b/
+    nxrFb8Ym4k7qx4vRv8Xs_l5Dg.png
+L/
+  a/
+    6qi18Z8LwgnZdsAr1qy1GwCwo.gif
+X/
+  3/
+    1pO5JJJKEifJ7sfvuf3mGeD_8.png
+  N/
+    ya0AroXD40MFsUD5H4-a4glA8.gif
+```
+

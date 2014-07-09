@@ -24,7 +24,7 @@ Flag -w=yes (--webp=yes)
 
 
 #English
-Borschik is an extendable builder for text-based file formats.
+borschik is an extendable builder for text-based file formats.
 It's main purpose is the assembly of static files for web projects (CSS, JS, etc.).
 
 [Documentation](./docs/index/index.en.md)
@@ -39,13 +39,13 @@ It's main purpose is the assembly of static files for web projects (CSS, JS, etc
 [Article at bem.info](http://bit.ly/en-borschik)
 
 #Русский
-Borschik — это расширяемый сборщик файлов текстовых форматов.
+borschik — это расширяемый сборщик файлов текстовых форматов.
 Его основной задачей является сборка статических файлов веб-проектов (CSS, JS
 и т.д.).
 
 [Документация](./docs/index/index.ru.md)
 
-[Статья про Borschik на bem.info](http://bit.ly/ru-borschik)
+[Статья про borschik на bem.info](http://bit.ly/ru-borschik)
 
 <!-- Yandex.Metrika counter -->
 <img src="https://mc.yandex.ru/watch/12831025" style="position:absolute; left:-9999px;" alt="" />

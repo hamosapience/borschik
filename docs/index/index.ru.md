@@ -1,9 +1,9 @@
-# Borschik
+# borschik
 
-Borschik — это расширяемый сборщик файлов текстовых форматов.
+borschik — это расширяемый сборщик файлов текстовых форматов.
 Его основной задачей является сборка статических файлов веб-проектов (CSS, JS и т.д.).
 
-[Статья про Borschik на bem.info](http://bit.ly/ru-borschik)
+[Статья про borschik на bem.info](http://bit.ly/ru-borschik)
 
 ## Установка
 
@@ -67,11 +67,11 @@ borschik [OPTIONS]
   },
   // path-mapping для заморозки
   "freeze_paths": {
-     "<original-path-to-files>": "<path-for-freezed-files>"
+     "<wildcard-to-files>": "<path-for-freezed-files>"
   }
 }
 ```
 
 
 ## Лицензия
-[MIT](/MIT-LICENSE.txt)
+[MIT](https://github.com/bem/borschik/blob/master/MIT-LICENSE.txt)
