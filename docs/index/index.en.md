@@ -1,6 +1,6 @@
-# Borschik
+# borschik
 
-Borschik is an extendable builder for text-based file formats.
+borschik is an extendable builder for text-based file formats.
 Its main purpose is assembly of static files for web projects (CSS, JS, etc.).
 
 You can get more info from the [article at bem.info](http://bem.info/articles/borschik)
@@ -9,7 +9,7 @@ You can get more info from the [article at bem.info](http://bem.info/articles/bo
 
 Prerequisites:
 
-* nodejs >= 0.6.x&nbsp;— [http://nodejs.org](http://nodejs.org)
+* nodejs >= 0.8.x&nbsp;— [http://nodejs.org](http://nodejs.org)
 * npm&nbsp;— [http://github.com/isaacs/npm/](http://github.com/isaacs/npm/)
 
 From NPM, for use as a command line app:
@@ -34,6 +34,8 @@ The available options are:
 
     -t TECH, --tech=TECH                Path to technology (default: file extension)
                                                                           [string]
+    --tech-options=TECHOPTIONS          Additional options for tech in JSON format
+                                                                          [string]
     -i INPUT, --input=INPUT             Input file (required)
                                                                           [string]
     -o OUTPUT, --output=OUTPUT          Output file (required)
@@ -52,7 +54,12 @@ The available options are:
 | Include        | X    | -      | X         | -      |
 | Url processing | X    | X      | X         | X      |
 | Url freeze     | X    | X      | X         | X      |
-| Minimize       | CSSO | -      | UglifyJS  | X      |
+| Minimize       | CSSO | -      | UglifyJS*  | X      |
+
+*: JS tech supports `--tech-options` that passed to UglifyJS.
+```
+$ borschik --input=myfile.js --tech-options='{"uglify":{"output":{"max_line_len": 100},"warnings":true}}'
+```
 
 ## .borschik config description
 ```
@@ -67,11 +74,15 @@ The available options are:
   },
   // path-mapping for freeze
   "freeze_paths": {
-     "<original-path-to-files>": "<path-for-frozen-files>"
-  }
+     "<wildcard-to-files>": "<path-for-frozen-files>"
+  },
+  
+  // freeze nesting level (default 0)
+  // read more https://github.com/bem/borschik/blob/master/docs/freeze/freeze.en.md
+  "freeze_nesting_level": <level>
 }
 ```
 
 
 ## License
-[MIT](/MIT-LICENSE.txt)
+[MIT](https://github.com/bem/borschik/blob/master/MIT-LICENSE.txt)

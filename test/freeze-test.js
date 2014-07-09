@@ -1,6 +1,6 @@
 var BORSCHIK = require('..'),
     FREEZE = require('..').freeze,
-    FS = BORSCHIK.require('./fs'),
+    FS = require('fs'),
     PATH = require('path'),
     ASSERT = require('assert'),
 
@@ -49,13 +49,11 @@ describe('loadConfig', function() {
         ASSERT.equal(FREEZE.path(PATH.resolve(__dirname, 'config_load')), '//test/test/');
     });
 
-    it('freezePath', function() {
-        ASSERT.ok(FREEZE.freezePath(PATH.resolve(__dirname, 'config_load')));
-    });
-
     it('freezeDir', function() {
-        ASSERT.equal(FREEZE.freezeDir(PATH.resolve(__dirname, 'config_load/file.png')),
-                     FREEZE.freezePath(PATH.resolve(__dirname, 'config_load')));
+        ASSERT.equal(
+            FREEZE.freezeDir(PATH.resolve(__dirname, 'config_load/file.png')),
+            PATH.resolve(__dirname, 'config_load/test/test2')
+        );
     });
 
 });
@@ -64,10 +62,6 @@ describe('loadConfig empty', function() {
 
     it('path', function() {
         ASSERT.equal(FREEZE.path(PATH.resolve(__dirname, 'empty_config')), undefined);
-    });
-
-    it('freezePath', function() {
-        ASSERT.equal(FREEZE.freezePath(PATH.resolve(__dirname, 'empty_config')), undefined);
     });
 
     it('freezeDir', function() {
@@ -140,6 +134,7 @@ function testFreeze(tech, dir, inPath, outPath, okPath, freeze, minimize, webp) 
 
 describe('freeze from .css (-t css)', function() {
     testFreeze('css', 'freeze_from_css', 'test.css', '_test.css', 'ok_css.css', true, false, false);
+    testFreeze('css', 'freeze_from_css', '1_test.css', '1__test.css', '1_result.css', true, false, false);
 });
 
 describe('freeze excepts from .css (-t css)', function() {
@@ -205,6 +200,31 @@ describe('freeze options: yes', function() {
         FS.unlinkSync(path);
         FS.rmdirSync(FREEZE.realpathSync('test/freeze_basic/test/test2'));
         FS.rmdirSync(FREEZE.realpathSync('test/freeze_basic/test'));
+    });
+
+});
+
+describe('freeze options: yes + nestingLevel', function() {
+    var inPath = PATH.resolve(PATH.join(__dirname, 'freeze_basic_nesting', 'a.css')),
+        outPath = PATH.resolve(PATH.join(__dirname, 'freeze_basic_nesting', 'o.css')),
+        path = PATH.resolve(PATH.join(__dirname, 'freeze_basic_nesting', 'test', 'test2', 'w/F/Ps-e1B3wMRud8TzGw7YHjS08I.png'));
+
+    before(function() {
+        return BORSCHIK.api({ tech: 'css', input: inPath, output: outPath, minimize: true });
+    });
+
+    it('freeze yes', function() {
+        ASSERT.ok(FS.existsSync(outPath));
+        ASSERT.ok(FS.existsSync(path));
+    });
+
+    after(function() {
+        FS.unlinkSync(outPath);
+        FS.unlinkSync(path);
+        FS.rmdirSync(FREEZE.realpathSync('test/freeze_basic_nesting/test/test2/w/F'));
+        FS.rmdirSync(FREEZE.realpathSync('test/freeze_basic_nesting/test/test2/w'));
+        FS.rmdirSync(FREEZE.realpathSync('test/freeze_basic_nesting/test/test2'));
+        FS.rmdirSync(FREEZE.realpathSync('test/freeze_basic_nesting/test'));
     });
 
 });
