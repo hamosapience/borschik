@@ -14,7 +14,7 @@ describe('WebP convert', function() {
 
     it('WebP convert ok', function() {
         var file = FS.readFileSync(FREEZE.realpathSync('test/freeze_webp/test.webp'));
-        ASSERT.equal('G318N0xI85VMmocDE-OtCVLeQ94', FREEZE.fixBase64(FREEZE.sha1Base64(file)) );
+        ASSERT.equal('5CjvycK_uBE_kCXRcfXSPaaHaNo', FREEZE.fixBase64(FREEZE.sha1Base64(file)) );
     });
 
     after(function() {
