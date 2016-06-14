@@ -1,0 +1,6 @@
+a {
+    p: url('test.png');
+}
+b {
+    p: url('webp/test.png');
+}

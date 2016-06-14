@@ -1,0 +1,17 @@
+{
+    "paths" : {
+        "./": "//a/b/"
+    },
+
+    "freeze_paths" : {
+        "./webp/**": "test/webp",
+        "./**": "test/test2/"
+    },
+
+    "webp": {
+        "quality": 90
+    },
+    "webp_paths": [
+        "test/webp"
+    ]
+}
