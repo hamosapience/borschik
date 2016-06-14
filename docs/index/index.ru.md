@@ -1,24 +1,24 @@
 # borschik
 
-borschik — это расширяемый сборщик файлов текстовых форматов.
+`borschik` — это расширяемый сборщик файлов текстовых форматов.
 Его основной задачей является сборка статических файлов веб-проектов (CSS, JS и т.д.).
 
-[Статья про borschik на bem.info](http://bit.ly/ru-borschik)
+Для дополнительной информации читайте [статью про borschik](https://ru.bem.info/articles/borschik/) на bem.info.
 
 ## Установка
 
 Требования:
 
-* nodejs >= 0.6.x&nbsp;— [http://nodejs.org](http://nodejs.org)
-* npm&nbsp;— [http://github.com/isaacs/npm/](http://github.com/isaacs/npm/)
+* [NodeJS](http://nodejs.org) >= 0.8.x
+* [npm](https://github.com/isaacs/npm/)
 
-Установка из npm для использования из командой строки:
+Установка из `npm` для использования из командой строки:
 
     npm install borschik -g
 
 Установка из Git:
 
-    git clone git://github.com/bem/borschik.git
+    git clone git://github.com/borschik/borschik.git
 
 ## Использование
 
@@ -42,7 +42,7 @@ borschik [OPTIONS]
                                                                           [boolean]
     -m MINIMIZE, --minimize=MINIMIZE    Минимизация входного файла (по умолчанию: true)
                                                                           [boolean]
-    -c COMMENTS, --comments=COMMENTS    Поясняющие комментарии к склееным файлам (по умолчанию: true)
+    -c COMMENTS, --comments=COMMENTS    Поясняющие комментарии к склеенным файлам (по умолчанию: true)
                                                                           [boolean]
 
 ## Поддерживаемые технологии
@@ -74,4 +74,4 @@ borschik [OPTIONS]
 
 
 ## Лицензия
-[MIT](https://github.com/bem/borschik/blob/master/MIT-LICENSE.txt)
+[MIT](https://github.com/borschik/borschik/blob/master/MIT-LICENSE.txt)
