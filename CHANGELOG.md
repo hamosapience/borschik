@@ -1,3 +1,13 @@
+## 1.4.0
+- You can now freeze `.woff2`, `.js`, `.css` and `.cur` files.
+- `vow-fs` was updated to `0.3.4`.
+
+## 1.3.2
+You can now freeze `.eot` files.
+
+## 1.3.1
+You can now freeze `.ico` files.
+
 ## 1.3.0
 **New features**
  * Add support for [per directory freeze nesting level](https://github.com/bem/borschik/blob/master/docs/freeze/freeze.en.md#setting-nesting-level-per-directory).
@@ -5,6 +15,7 @@
 ## 1.2.0
 **New features**
  * borschik now supports `techOptions` as object in API [#72](https://github.com/bem/borschik/pull/72)
+
 ```js
 // old API (also supported)
 borschik.api({
@@ -24,6 +35,7 @@ borschik.api({
 ## 1.1.0
 **New features**
  * borschik now supports input as string [#69](https://github.com/bem/borschik/pull/69). Use `inputString` and `basePath` options in API
+
 ```
 borschik.api({
     basePath: '.',
@@ -55,6 +67,7 @@ borschik.api({
 ## 1.0.2
 
 -  UglifyJS options support in JS tech.
+
 ```
 $ borschik --input=myfile.js --tech-options='{"uglify":{"output":{"max_line_len": 100},"warnings":true}}'
 ```

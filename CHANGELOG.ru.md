@@ -1,3 +1,13 @@
+## 1.4.0
+- Теперь можно фризить `.woff2`, `.js`, `.css` и `.cur` файлы.
+- Модуль `vow-fs` был обновлен до версии `0.3.4`.
+
+## 1.3.2
+Теперь можно фризить `.eot` файлы.
+
+## 1.3.1
+Теперь можно фризить `.ico` файлы.
+
 ## 1.3.0
 **Новые возможности**
  * Настраивать фриз во вложенные папки теперь можно [отдельно для каждой директории](https://github.com/bem/borschik/blob/master/docs/freeze/freeze.en.md#setting-nesting-level-per-directory).
@@ -5,6 +15,7 @@
 ## 1.2.0
 **Новые возможности**
  * borschik теперь поддерживает в API `techOptions` как объект [#72](https://github.com/bem/borschik/pull/72)
+
 ```js
 // было (этот вариант тоже поддерживается)
 borschik.api({
@@ -24,6 +35,7 @@ borschik.api({
 ## 1.1.0
 **Новые возможности**
  * borschik теперь может обрабатывать строки на вход [#69](https://github.com/bem/borschik/pull/69). Используйте опции `inputString` и `basePath` в API
+
 ```
 borschik.api({
     basePath: '.',
@@ -55,6 +67,7 @@ borschik.api({
 ## 1.0.2
 
 -  Поддержка передача параметров для UglifyJS в технологии JS.
+
 ```
 $ borschik --input=myfile.js --tech-options='{"uglify":{"output":{"max_line_len": 100},"warnings":true}}'
 ```
@@ -69,12 +82,15 @@ $ borschik --input=myfile.js --tech-options='{"uglify":{"output":{"max_line_len"
 - [Добавили поддержку wildcard для freeze_path](https://github.com/bem/borschik/issues/23). Это изменение ломает совместимость со старым поведением:
   - путь для фриза теперь относителен конфига `.borschik`, как и все остальные опции (`paths`, `follow_symlinks`)
   - вместо пути `./images` теперь надо писать `./images/**`. Например
+  
   ```json
   "freeze_paths": {
         "./static/images/**": "./static/freeze"
   }
   ```
+  
   т.е. все ресурсы из static/images будут зафрижены в static/freeze. Раньше надо было писать вот так
+  
   ```json
   "freeze_paths": {
         "./static/images": "../freeze"

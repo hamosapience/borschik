@@ -91,6 +91,7 @@ describe('isFreezableUrl', function() {
         ASSERT.ok(FREEZE.isFreezableUrl('xxx.jpg'));
         ASSERT.ok(FREEZE.isFreezableUrl('xxx.jpeg'));
         ASSERT.ok(FREEZE.isFreezableUrl('xxx.ico'));
+        ASSERT.ok(FREEZE.isFreezableUrl('xxx.cur'));
         ASSERT.ok(FREEZE.isFreezableUrl('xxx.png'));
         ASSERT.ok(FREEZE.isFreezableUrl('xxx.gif'));
         ASSERT.ok(FREEZE.isFreezableUrl('xxx.svg'));
@@ -99,6 +100,7 @@ describe('isFreezableUrl', function() {
         ASSERT.ok(FREEZE.isFreezableUrl('xxx.eot'));
         ASSERT.ok(FREEZE.isFreezableUrl('xxx.otf'));
         ASSERT.ok(FREEZE.isFreezableUrl('xxx.woff'));
+        ASSERT.ok(FREEZE.isFreezableUrl('xxx.woff2'));
     });
 
 });
