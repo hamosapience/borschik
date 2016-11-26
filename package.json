@@ -17,7 +17,6 @@
   "dependencies": {
     "minimatch": "3.0.0",
     "coa": "0.4.0",
-    "exec-sync": "0.1.6",
     "vow": "0.4.8",
     "inherit": "2.2.3",
     "vow-fs": "0.3.4",
@@ -35,7 +34,7 @@
     "coverage": "make coverage"
   },
   "engines": [
-    "node >= 0.8.0"
+    "node >= 0.12.0"
   ],
   "license": "MIT"
 }
