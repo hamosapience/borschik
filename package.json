@@ -1,7 +1,7 @@
 {
   "name": "borschik-webp",
   "description": "Extendable builder for text-based file formats",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "homepage": "http://github.com/borschik/borschik",
   "author": "Sergey Berezhnoy <veged@ya.ru> (http://github.com/veged)",
   "repository": {
@@ -15,23 +15,23 @@
     "borschik-webp": "./bin/borschik"
   },
   "dependencies": {
-    "minimatch": "3.0.0",
-    "coa": "0.4.0",
-    "vow": "0.4.8",
-    "inherit": "2.2.3",
-    "vow-fs": "0.3.4",
-    "csso": "2.0.0",
-    "uglify-js": "2.6.2"
+    "minimatch": "3.0.3",
+    "coa": "1.0.1",
+    "inherit": "2.2.6",
+    "vow": "0.4.12",
+    "vow-fs": "0.3.6",
+    "csso": "^2.0.0",
+    "uglify-js": "2.7.4"
   },
   "devDependencies": {
-    "istanbul": "0.2.x",
-    "mocha-istanbul": "0.2.x",
-    "mocha": "1.20.x"
+    "coveralls": "^2.11.14",
+    "mocha": "^3.1.2",
+    "nyc": "^8.3.2"
   },
   "optionalDependencies": {},
   "scripts": {
-    "test": "make test",
-    "coverage": "make coverage"
+    "test": "nyc mocha",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "engines": [
     "node >= 0.12.0"
