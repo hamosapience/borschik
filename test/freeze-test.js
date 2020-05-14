@@ -298,7 +298,8 @@ function testJS(tech, dir, inPath, outPath, okPath) {
         return BORSCHIK.api({ tech: tech, input: inPath, output: outPath, minimize: true });
     });
 
-    it('UglifyJS, tech ' + tech + ' ok', function() {
+    it(`UglifyJS, tech ${tech} ${inPath} ok`, function() {
+
         ASSERT.equal(readFile(outPath).toString(), readFile(okPath).toString());
     });
 
@@ -309,6 +310,8 @@ function testJS(tech, dir, inPath, outPath, okPath) {
 
 describe('UglifyJS yes, tech js', function() {
     testJS('js', 'uglifyjs_test', 'test.js', '_test.js', 'ok_js.js');
+
+    testJS('js', 'uglifyjs_test', 'es6.js', '_es6.js', 'ok_es6.js');
 });
 
 describe('freeze AlphaImageLoader from .css (-t css)', function() {

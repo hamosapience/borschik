@@ -1,0 +1,1 @@
+GLOB(({page:e,text:r})=>(r=(e=>{var r=GLO();return e.replace(r,"")})(r))+e.x);
