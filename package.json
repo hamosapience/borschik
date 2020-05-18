@@ -1,5 +1,5 @@
 {
-  "name": "borschik-webp",
+  "name": "borschik-webp-internal",
   "description": "Extendable builder for text-based file formats",
   "version": "1.6.5",
   "homepage": "http://github.com/borschik/borschik",
