@@ -1,7 +1,7 @@
 {
   "name": "borschik-webp",
   "description": "Extendable builder for text-based file formats",
-  "version": "1.6.4",
+  "version": "1.6.5",
   "homepage": "http://github.com/borschik/borschik",
   "author": "Sergey Berezhnoy <veged@ya.ru> (http://github.com/veged)",
   "repository": {
